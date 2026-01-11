@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*{padding: 0%;
+  margin: 0%;
+}
+
+    .main
+         {display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         background-image: url(24.jpg);
+        }
+
+  .mobile
+        {width: 330px;
+        height: 600px;
+        border: 5px solid black;
+        margin: 15px;
+        background-color: rgb(250, 241, 241);
+        border-radius: 30px;
+    } 
+    
+ .mobile select
+      {padding: 7px;
+      margin-left: 117px;
+    border: none;
+    background: transparent;
+    }
+    
+.mobile input
+           {width: 250px;
+           background: transparent;
+           padding: 19px;
+           border-radius: 16px;
+           margin-left: 20px;
+        }  
+        
+ #fbold
+       {font-size: 25px;
+        margin-left: 20px;
+      }
+ #sbold
+       {font-size: 18px;
+        margin-left: 20px;
+      }   
+      
+nav li
+              {color:white;
+               font-size: 15px;
+               margin: 26px;
+               display: inline-block;
+               margin-top: px;
+              
+        }         
+  nav a 
+        {color:white;
+        text-decoration: none;
+         }   
+                
+ nav 
+       {width: 100%;
+        height: 60px;
+       background-color: darkblue;
+        text-align: center;
+          }   
+          
+ @media screen and (min-width: 300px) and (max-width: 600px){
+  nav li
+              {color:white;
+               font-size: 12px;
+               margin: 12px;
+               display: inline-block;
+               margin-top: px;
+              
+        }         
+  nav a 
+        {color:white;
+        text-decoration: none;
+         }   
+                
+ nav 
+       {width: 100%;
+        height: 45px;
+       background-color: darkblue;
+        text-align: center;
+               overflow: auto;
+
+          } 
+ }            
+    </style>
+</head>
+<body>
+  <div class="main">
+    <nav>
+ <ul>
+     <li><a href="index.html">Project 1</a></li>
+    <li><a href="Project 2.html">Project 2</a></li>
+    <li><a href="Project 3.html">Project 3</a></li>
+    <li><a href="Project 4.html">Project 4</a></li>
+    <li><a href="project 5.html">Project 5</a></li>
+     <li><a href="bank.html">Project 6</a></li>
+     <li><a href="iphone.html">Iphone</a></li>
+    
+     
+ </ul> 
+        </nav>
+                   
+<div class="mobile">
+    <br><br>
+<select name="" id="">
+<option value="">Enlish (US)</option>
+<option value="">French</option>
+<option value="">Italiano</option>
+</select>
+
+<br><br><br><br><br>
+<img src="Messenger-Logo-2018.png" alt="" style="width: 90px;margin-left: 120px;">
+<br><br><br><br>
+<input type="text" placeholder="Mobile number or email"style="border: 1px solid grey">
+<br><br>
+<input type="password" placeholder="password"style="border: 1px solid grey">
+<br><br>
+<button style="width: 290px;padding: 16px ;margin-left: 20px; border: 1px solid grey; border-radius: 30px;border: none;background-color: blue; color: white;">Log in</button>
+<br><br>
+
+<a href="" style="font-size: 20px;color: black;margin-left: 100px; text-decoration: none;">Forgot password?</a>
+<br><br><br>
+<input type="text" placeholder="Create new account" style="color: blue;border-color: blue;padding: 16px; border-radius: 25px;">
+</div>
+<br><br>
+
+
+
+<div class="mobile" style="margin-top: 100px;">
+  <br><br>
+  <b id="fbold">What's your name?</b>
+  <br>
+  <b id="sbold">Enter the name you use in real life.</b>
+  <br><br>
+
+  <input type="text" placeholder="First name" style="width: 110px; border: 1px solid grey;border-radius: 12px; padding: 14px;background-color: transparent;">
+  <input type="text" placeholder="Last name" style="width: 110px;margin-left: 5px; border: 1px solid grey;border-radius: 12px; padding: 14px;background-color: transparent;">
+  <br><br>
+  <button style="width: 290px; border: 1px solid grey;margin-left: 20px;padding: 13px; border-radius: 30px;border: none;background-color: blue; color: white;">Next</button>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p style="font-size: 20px;margin-left: 100px;color: blue;">Find my account</p>
+
+</div>
+<div class="mobile" style="margin-top: 200px;">
+  <br><br>
+  <b id="fbold">Find my account</b>
+  <br>
+  <b id="sbold">Enter your mobilenumber</b>
+  <br><br>
+  <input type="text" placeholder="Mobile number" style="width: 250px;padding: 15px;border-radius: 12px;margin-left: 20px; border: 1px solid grey;">
+<br><br>
+  <button style="width: 290px;margin-left: 20px;padding: 13px; border-radius: 30px;border: none;background-color: blue; color: white;">Continue</button>
+<br><br>
+<p style="font-size: 20px;margin-left: 70px;">Search by email instead</p>
+
+
+
+</div>
+
+  </div>  
+</body>
+</html>

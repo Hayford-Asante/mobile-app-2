@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Authentication</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #f5f5f5;
+            border-radius: 35px;
+            padding: 50px 25px 25px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .screen p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            gap: 10px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+      .social-media{
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+       }
+
+     .google{
+        flex: 1;
+        height: 40px;
+        background-image: url('hhh.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+       }
+
+       .facebook{
+        flex: 1;
+        height: 40px;
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+       }
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 30px;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            border-color: #667eea;
+            background: #f9f9f9;
+        }
+
+        .auth-link {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: auto;
+        }
+
+        .auth-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+.profile img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border-radius: 100px;
+}
+
+.profile{
+    width:36px;
+    height:36px;
+    border-radius:100px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+    font-weight:700;
+}
+
+    
+ nav li
+              {color:white;
+               font-size: 15px;
+               margin: 26px;
+               display: inline-block;
+               margin-top: px;
+              
+        }         
+  nav a 
+        {color:white;
+        text-decoration: none;
+         }   
+                
+ nav 
+       {width: 100%;
+        height: 60px;
+       background-color: darkblue;
+        text-align: center;
+          }    
+          
+@media screen and (min-width: 300px) and (max-width: 600px){
+nav li
+              {color:white;
+               font-size: 12px;
+               margin: 12px;
+               display: inline-block;
+               margin-top: px;
+              
+        }         
+nav a 
+        {color:white;
+        text-decoration: none;
+         }   
+                
+nav 
+       {width: 100%;
+        height: 45px;
+       background-color: darkblue;
+        text-align: center;
+        overflow: auto;
+         } 
+ }        
+    </style>
+</head>
+<body>
+    <div class="container">
+         <nav>
+ <ul>
+     <li><a href="index.html">Project 1</a></li>
+    <li><a href="Project 2.html">Project 2</a></li>
+    <li><a href="Project 3.html">Project 3</a></li>
+    <li><a href="Project 4.html">Project 4</a></li>
+    <li><a href="project 5.html">Project 5</a></li>
+     <li><a href="bank.html">Project 6</a></li>
+     <li><a href="iphone.html">Iphone</a></li>
+    
+     
+ </ul> 
+        </nav>
+        <!-- Sign Up Phone -->
+        <div class="phone-frame">
+            <div class="screen">
+                <h2>Create Account</h2>
+                <p>Sign up to get started</p>
+
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="+1 (555) 000-0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter Password" required>
+                    </div>
+
+                    <button type="submit" class="btn">Create Account</button>
+                </form>
+
+                <div class="divider">OR</div>
+
+                <!-- <div class="social-login">
+                    <button class="social-btn" title="Sign up with Google" style="background-image: url(hhh.png);background-size: cover;">G</button>
+                    <button class="social-btn" title="Sign up with Facebook">f</button>
+                </div> -->
+
+                <div class="social-media">
+<div class="google">
+<img src="hhh.png" alt="">
+</div>
+
+<div class="facebook">
+
+</div>
+                </div>
+
+                <div class="auth-link">
+                    Already have an account? <a href="#" onclick="toggleForms(event)">Login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Phone -->
+        <div class="phone-frame">
+            <div class="screen">
+                <h2>Login</h2>
+                <p>Sign in to your account</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter Password" required>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+                </form>
+
+                <div class="divider">OR</div>
+
+                              <div class="social-media">
+<div class="google">
+
+</div>
+
+<div class="facebook">
+
+</div>
+                </div>
+
+
+                <div class="auth-link">
+                    Don't have an account? <a href="#" onclick="toggleForms(event)">Create Account</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wallet/Dashboard Phone (updated to match provided image) -->
+        <div class="phone-frame">
+            <div class="screen">
+                <div class="topbar" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                    <div style="display:flex; align-items:center; gap:10px; color:#666; font-size:14px;">
+                        <div style="width:22px; height:2px; background:#999; border-radius:2px;"></div>
+                        <div style="font-weight:600;">Home</div>
+                    </div>
+                    <div class="profile" style="width:32px; height:32px; border-radius:8px; background:#eee; display:flex; align-items:center; justify-content:center; font-size:12px;"><img src="pexels-cottonbro-5378700.jpg" alt=""></div>
+                </div>
+
+                <div style="font-size:12px; color:#666;">Welcome, Hayford Asante 👋</div>
+
+                <div class="balance-card" style="background: linear-gradient(135deg,#3b6bf0 0%,#5b3bb8 100%); color:#fff; padding:12px; border-radius:12px; margin:10px 0 14px; box-shadow:0 8px 18px rgba(59,107,240,0.18);">
+                    <div style="font-size:11px; opacity:0.9;">Your Wallet</div>
+                    <div style="font-size:20px; font-weight:800; margin-top:6px;">$36,850.00</div>
+                </div>
+
+                <div class="activities" style="margin-bottom:10px;">
+                    <div style="font-size:11px; color:#666; font-weight:700; margin-bottom:8px;">Activities</div>
+                    <div class="activity-card" style="background:#fff; border-radius:10px; padding:10px; box-shadow:0 6px 12px rgba(0,0,0,0.04); display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <div style="width:36px; height:36px; border-radius:50%; background:#f3f6ff; display:flex; align-items:center; justify-content:center; color:#2b4fdc; font-weight:700;">$</div>
+                            <div>
+                                <div style="font-size:11px; color:#333; font-weight:700;">Monthly Salary</div>
+                                <div style="font-size:11px; color:#999;">$12,500</div>
+                            </div>
+                        </div>
+                        <div style="flex:0 0 60px; text-align:right;">
+                            <div style="height:6px; width:60px; background:#eee; border-radius:6px; overflow:hidden;">
+                                <div style="width:70%; height:100%; background:linear-gradient(90deg,#3b6bf0,#5b3bb8);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:10px;">
+                    <div style="font-size:11px; color:#666; font-weight:700; margin-bottom:8px;">Recent</div>
+                    <div style="display:flex; gap:8px; align-items:center;">
+                        <div class="profile" style="width:36px; height:36px; border-radius:; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.06); font-weight:700;"><img src="pexels-andrew77uk-697509.jpg" alt=""></div>
+                        <div class="profile" style="width:36px; height:36px; border-radius:; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.06); font-weight:700;"><img src="pexels-dziana-hasanbekava-7275385.jpg" alt=""></div>
+                        <div class="profile" style="width:36px; height:36px; border-radius:; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.06); font-weight:700;"><img src="pexels-chrofit-the-man-to-call-2515393-5615665.jpg" alt=""></div>
+                        <div class="profile" style="width:36px; height:36px; border-radius:; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.06); font-weight:700;"><img src="pexels-kensin-kei-807258-1678824.jpg" alt=""></div>
+                        <div class="profile" style="width:36px; height:36px; border-radius:; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.06); font-weight:700;">+</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:10px;">
+                    <div style="font-size:11px; color:#666; font-weight:700; margin-bottom:8px;">Monthly Subscription</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #f0f0f0;">
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div style="width:36px; height:36px; border-radius:8px; background:#f7f7f7; display:flex; align-items:center; justify-content:center;">Z</div>
+                            <div style="font-size:12px;">Zee Devs</div>
+                        </div>
+                        <div style="font-size:12px; color:#ff6b6b;">-18.75</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:12px;">
+                    <div style="font-size:11px; color:#666; font-weight:700; margin-bottom:8px;">Trends</div>
+                    <div style="display:flex; gap:6px; align-items:end; height:36px;">
+                        <div style="width:10px; height:8px; background:#eee; border-radius:4px;"></div>
+                        <div style="width:10px; height:18px; background:#ddd; border-radius:4px;"></div>
+                        <div style="width:10px; height:26px; background:#bbb; border-radius:4px;"></div>
+                        <div style="width:10px; height:14px; background:#ddd; border-radius:4px;"></div>
+                        <div style="width:10px; height:30px; background:#3b6bf0; border-radius:4px;"></div>
+                    </div>
+                </div>
+
+                <button style="width:100%; padding:10px; background:#fff; color:#3b6bf0; border:none; border-radius:12px; font-weight:700; margin-top:auto;">View</button>
+
+                <div class="bottom-nav" style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:10px; border-top:1px solid #f0f0f0;">
+                    <div style="width:24px; height:24px; background:#3b6bf0; border-radius:6px;"></div>
+                    <div style="width:24px; height:24px; background:#eee; border-radius:6px;"></div>
+                    <div style="width:24px; height:24px; background:#eee; border-radius:6px;"></div>
+                    <div style="width:24px; height:24px; background:#eee; border-radius:6px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
