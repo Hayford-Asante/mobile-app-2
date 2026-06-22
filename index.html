@@ -1,54 +1,267 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-*{padding: 0%;
-  margin: 0%;
-}
-
-    .main
-         {display: flex;
-         flex-wrap: wrap;
-         justify-content: center;
-         background-image: url(24.jpg);
-        }
-
-  .mobile
-        {width: 330px;
-        height: 600px;
-        border: 5px solid black;
-        margin: 15px;
-        background-color: rgb(250, 241, 241);
-        border-radius: 30px;
-    } 
-    
- .mobile select
-      {padding: 7px;
-      margin-left: 117px;
-    border: none;
-    background: transparent;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Compact Facebook Mobile UI Flow</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root {
+      --fb-blue: #1877f2;
+      --fb-bg: #f0f2f5;
+      --fb-green: #42b72a;
+      --text-dark: #1c1e21;
+      --text-muted: #65676b;
+      --border-color: #ccd0d5;
+      --phone-bg: #ffffff;
     }
-    
-.mobile input
-           {width: 250px;
-           background: transparent;
-           padding: 19px;
-           border-radius: 16px;
-           margin-left: 20px;
-        }  
-        
- #fbold
-       {font-size: 25px;
-        margin-left: 20px;
-      }
- #sbold
-       {font-size: 18px;
-        margin-left: 20px;
-      }   
-      
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Arial, Roboto, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e4e6eb, #bdc3c7);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      color: var(--fb-blue);
+      margin-bottom: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-align: center;
+    }
+
+    /* --- COMPACT MOBILE CANVAS CONTAINER --- */
+    .showcase-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* Scaled down Smartphone Chassis */
+    .phone-wrapper {
+      width: 280px;
+      height: 580px;
+      background: #000000;
+      border-radius: 32px;
+      padding: 8px;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px #2d3436;
+      position: relative;
+    }
+
+    /* Smaller Camera Notch */
+    .phone-notch {
+      position: absolute;
+      top: 13px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85px;
+      height: 16px;
+      background: #000000;
+      border-radius: 10px;
+      z-index: 10;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--phone-bg);
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Compact Status Bar */
+    .status-bar {
+      height: 32px;
+      padding: 0 16px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      background: transparent;
+      z-index: 5;
+    }
+
+    .status-icons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .app-view {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .brand-hero {
+      text-align: center;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .brand-hero i {
+      font-size: 2.8rem;
+      color: var(--fb-blue);
+    }
+
+    .screen-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .screen-header .back-btn {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    .screen-header h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* --- FORM STYLING UTILITIES --- */
+    .form-group {
+      margin-bottom: 0.6rem;
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      background: #f7f8fa;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--fb-blue);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.15);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .input-instruction {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: -0.15rem 0 0.5rem;
+      line-height: 1.3;
+    }
+
+    .gender-selector-group {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .gender-option {
+      flex: 1;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.55rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      background: #ffffff;
+    }
+
+    /* --- COMPACT BUTTONS --- */
+    .btn-action {
+      width: 100%;
+      padding: 0.65rem;
+      border: none;
+      border-radius: 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.1s ease;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+    }
+
+    .btn-action:active {
+      transform: scale(0.98);
+    }
+
+    .btn-blue {
+      background: var(--fb-blue);
+      color: #ffffff;
+    }
+
+    .btn-green {
+      background: var(--fb-green);
+      color: #ffffff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--fb-blue);
+      color: var(--fb-blue);
+    }
+
+    .link-center {
+      text-align: center;
+      display: block;
+      margin-top: 0.8rem;
+      color: var(--fb-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .footer-action-area {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f2f5;
+    }
+
+    /* Smaller Gesture Indicator Bar */
+    .home-indicator {
+      width: 100px;
+      height: 4px;
+      background: #000000;
+      border-radius: 10px;
+      margin: 14px auto -8px;
+    }
 nav li
               {color:white;
                font-size: 15px;
@@ -67,9 +280,27 @@ nav li
         height: 60px;
        background-color: darkblue;
         text-align: center;
+        overflow: auto;
           }   
-          
- @media screen and (min-width: 300px) and (max-width: 600px){
+/*           
+ @media screen and (max-width: 768px){
+  body {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  .main, .mobile-main {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mobile1, .mobile2, .mobile {
+    width: 95vw !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+  
   nav li
               {color:white;
                font-size: 12px;
@@ -91,82 +322,164 @@ nav li
                overflow: auto;
 
           } 
- }            
+ }             */
     </style>
 </head>
 <body>
   <div class="main">
-    <nav>
+   <nav>
  <ul>
      <li><a href="index.html">Project 1</a></li>
-    <li><a href="Project 2.html">Project 2</a></li>
-    <li><a href="Project 3.html">Project 3</a></li>
-    <li><a href="Project 4.html">Project 4</a></li>
-    <li><a href="project 5.html">Project 5</a></li>
-     <li><a href="bank.html">Project 6</a></li>
-     <li><a href="iphone.html">Iphone</a></li>
+    <li><a href="Project 3.html">Project 2</a></li>
+    <li><a href="Project 4.html">Project 3</a></li>
+     <li><a href="bank.html">Project 4</a></li>
+     <li><a href="iphone.html">Project 5</a></li>
     
      
  </ul> 
         </nav>
-                   
-<div class="mobile">
-    <br><br>
-<select name="" id="">
-<option value="">Enlish (US)</option>
-<option value="">French</option>
-<option value="">Italiano</option>
-</select>
+  <h1>Facebook App Mobile Interface Sequence</h1>
 
-<br><br><br><br><br>
-<img src="Messenger-Logo-2018.png" alt="" style="width: 90px;margin-left: 120px;">
-<br><br><br><br>
-<input type="text" placeholder="Mobile number or email"style="border: 1px solid grey">
-<br><br>
-<input type="password" placeholder="password"style="border: 1px solid grey">
-<br><br>
-<button style="width: 290px;padding: 16px ;margin-left: 20px; border: 1px solid grey; border-radius: 30px;border: none;background-color: blue; color: white;">Log in</button>
-<br><br>
+  <div class="showcase-container">
 
-<a href="" style="font-size: 20px;color: black;margin-left: 100px; text-decoration: none;">Forgot password?</a>
-<br><br><br>
-<input type="text" placeholder="Create new account" style="color: blue;border-color: blue;padding: 16px; border-radius: 25px;">
-</div>
-<br><br>
+    <!-- SCREEN ONE: LOG IN -->
+    <div class="phone-wrapper">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>09:41</span>
+          <div class="status-icons">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+        </div>
+        
+        <div class="app-view">
+          <div class="brand-hero">
+            <i class="fa-brands fa-square-facebook"></i>
+          </div>
 
+          <form onsubmit="event.preventDefault();">
+            <div class="form-group">
+              <input type="text" placeholder="Mobile number or email">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn-action btn-blue" style="margin-top: 0.3rem;">Log In</button>
+          </form>
 
+          <a href="#" class="link-center" onclick="alert('Demo Action: Password Reset')">Forgot Password?</a>
 
-<div class="mobile" style="margin-top: 100px;">
-  <br><br>
-  <b id="fbold">What's your name?</b>
-  <br>
-  <b id="sbold">Enter the name you use in real life.</b>
-  <br><br>
+          <div class="footer-action-area">
+            <button class="btn-action btn-outline">Create New Account</button>
+          </div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div>
 
-  <input type="text" placeholder="First name" style="width: 110px; border: 1px solid grey;border-radius: 12px; padding: 14px;background-color: transparent;">
-  <input type="text" placeholder="Last name" style="width: 110px;margin-left: 5px; border: 1px solid grey;border-radius: 12px; padding: 14px;background-color: transparent;">
-  <br><br>
-  <button style="width: 290px; border: 1px solid grey;margin-left: 20px;padding: 13px; border-radius: 30px;border: none;background-color: blue; color: white;">Next</button>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<p style="font-size: 20px;margin-left: 100px;color: blue;">Find my account</p>
+    <!-- SCREEN TWO: CREATE ACCOUNT -->
+    <div class="phone-wrapper">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>09:41</span>
+          <div class="status-icons">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+        </div>
 
-</div>
-<div class="mobile" style="margin-top: 200px;">
-  <br><br>
-  <b id="fbold">Find my account</b>
-  <br>
-  <b id="sbold">Enter your mobilenumber</b>
-  <br><br>
-  <input type="text" placeholder="Mobile number" style="width: 250px;padding: 15px;border-radius: 12px;margin-left: 20px; border: 1px solid grey;">
-<br><br>
-  <button style="width: 290px;margin-left: 20px;padding: 13px; border-radius: 30px;border: none;background-color: blue; color: white;">Continue</button>
-<br><br>
-<p style="font-size: 20px;margin-left: 70px;">Search by email instead</p>
+        <div class="app-view">
+          <div class="screen-header">
+            <button class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2>Join Facebook</h2>
+          </div>
 
+          <form onsubmit="event.preventDefault();">
+            <div class="form-row">
+              <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                <input type="text" placeholder="First name">
+              </div>
+              <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                <input type="text" placeholder="Surname">
+              </div>
+            </div>
 
+            <p class="input-instruction">Date of Birth</p>
+            <div class="form-row">
+              <input type="text" placeholder="23" style="width: 30%; text-align: center; padding: 0.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <input type="text" placeholder="May" style="width: 40%; text-align: center; padding: 0.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <input type="text" placeholder="2002" style="width: 30%; text-align: center; padding: 0.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            </div>
 
-</div>
+            <p class="input-instruction">Gender</p>
+            <div class="gender-selector-group">
+              <label class="gender-option">Female <input type="radio" name="gender" value="female"></label>
+              <label class="gender-option">Male <input type="radio" name="gender" value="male"></label>
+            </div>
 
-  </div>  
+            <div class="form-group">
+              <input type="text" placeholder="Mobile number or email">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="New password">
+            </div>
+
+            <p class="input-instruction" style="font-size: 0.65rem; margin-top: 0.4rem;">By tapping Sign Up, you agree to our Terms, Data Policy and Cookies Policy.</p>
+            
+            <button type="submit" class="btn-action btn-green" style="margin-top: 0.3rem;">Sign Up</button>
+          </form>
+
+          <div class="footer-action-area" style="padding-top: 0.5rem;">
+            <a href="#" class="link-center" style="margin-top: 0;">Already have an account?</a>
+          </div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN THREE: FIND MY ACCOUNT -->
+    <div class="phone-wrapper">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="status-bar">
+          <span>09:41</span>
+          <div class="status-icons">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+        </div>
+
+        <div class="app-view">
+          <div class="screen-header">
+            <button class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2>Find Your Account</h2>
+          </div>
+
+          <p class="input-instruction" style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-dark);">Enter your mobile number or email address to search for your account profile.</p>
+
+          <form onsubmit="event.preventDefault();">
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <input type="text" placeholder="Mobile number or email">
+            </div>
+            
+            <button type="submit" class="btn-action btn-blue">Find Account</button>
+          </form>
+
+          <div class="footer-action-area">
+            <button class="btn-action btn-outline" style="border-color: var(--border-color); color: var(--text-dark);">Search by name instead</button>
+          </div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </body>
-</html>
+</html> 
