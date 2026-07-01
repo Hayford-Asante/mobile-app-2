@@ -2,174 +2,161 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compact iPhone Launcher Mockups</title>
-    <!-- Font Awesome CDN for Vector Glyphs -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Premium Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Mobile UI Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
     <style>
-        /* --- GLOBAL PREMIUM DESIGN SYSTEM --- */
         * {
-            margin: 0;
             padding: 0;
+            margin: 0;
             box-sizing: border-box;
-            user-select: none;
-            -webkit-font-smoothing: antialiased;
+        }
+        
+        html, body {
+            width: 100%;
+            min-height: 100%;
+            -webkit-text-size-adjust: 100%;
+            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #0f172a;
+            color: white;
         }
 
-        body {
-            background-color: #0b0d13;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.4) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.4) 0px, transparent 50%);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 20px;
-        }
-
-        .header-title {
-            text-align: center;
+        /* Top Navigation Bar */
+        nav {
+            width: 100%;
+            background-color: #1e293b;
+            padding: 10px;
+            border-radius: 12px;
             margin-bottom: 30px;
         }
 
-        .header-title h1 {
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: #f8fafc;
-            margin-bottom: 6px;
-        }
-
-        .header-title p {
-            font-size: 13px;
-            color: #64748b;
-        }
-
-        /* --- COMPACT SMARTPHONE HARDWARE MOCKUP (~20% Smaller) --- */
-        .workspace {
+        nav ul {
             display: flex;
-            gap: 30px;
             justify-content: center;
-            align-items: center;
+            gap: 12px;
+            list-style: none;
             flex-wrap: wrap;
-            width: 100%;
-            max-width: 1000px;
         }
 
-        .iphone-frame {
-            width: min(88vw, 310px);
-            max-width: 310px;
-            aspect-ratio: 310 / 660;
-            border-radius: 46px;
-            border: 10px solid #1c1e24;
-            outline: 2px solid #2d3139;
-            box-shadow: 
-                0 20px 70px -15px rgba(0, 0, 0, 0.9),
-                inset 0 0 3px 2px rgba(255, 255, 255, 0.08);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background: #000;
+        nav a {
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background-color: rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+            transition: background 0.3s;
         }
 
-        /* Dynamic Island */
-        .dynamic-island {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 95px;
-            height: 24px;
-            background: #000000;
-            border-radius: 20px;
-            z-index: 1000;
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Main Workspace Wrapper */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        /* Container holding both mobile frames */
+        .mobile-container-flex {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 40px;
+            width: 100%;
         }
 
-        .camera-lens {
-            width: 8px;
-            height: 8px;
-            background: #090d16;
-            border-radius: 50%;
-            box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.2);
+        /* Universal Phone Frame Wrapper */
+        .phone-frame {
+            width: 340px;
+            height: 540px; /* Reduced from 680px */
+            border: 12px solid #000000;
+            border-radius: 48px;
+            box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
         }
 
-        /* iOS Top Bar Architecture */
-        .ios-top-bar {
+        /* Background assignment for individual screens */
+        .screen-home {
+            background-image: url('bgg.jpg');
+            background-color: #1e1e2e; /* Fallback */
+        }
+
+        .screen-lock {
+            background-image: url('pexels-eberhardgross-26853152.jpg');
+            background-color: #2e2e3e; /* Fallback */
+        }
+
+        /* Dynamic Headings / Notch Area */
+        .phone-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 24px 8px 24px;
-            font-size: 11px;
-            font-weight: 600;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-            z-index: 99;
+            width: 100%;
+            padding: 12px 20px 4px;
+            position: relative;
+            z-index: 50;
         }
 
-        .ios-icons {
+        .status-time {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            width: 50px;
+        }
+
+        .camera-notch {
+            background-color: #000000;
+            width: 110px;
+            height: 28px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
         }
 
-        /* --- SCREEN A: NOVAOS V4 (CYBER HOME SCREEN) --- */
-        .launcher-nova {
-            height: 100%;
-            background: linear-gradient(180deg, rgba(15, 18, 27, 0.85) 0%, rgba(7, 8, 12, 0.95) 100%), 
-                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&width=400&auto=format&fit=crop') center/cover;
+        .camera-notch .lens {
+            width: 6px;
+            height: 6px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+        }
+
+        .status-icons {
             display: flex;
-            flex-direction: column;
-            padding: 0 16px 16px 16px;
+            gap: 6px;
+            align-items: center;
+            color: #ffffff;
+            font-size: 12px;
+            width: 50px;
+            justify-content: flex-end;
         }
 
-        /* System Hybrid Widget */
-        .nova-widget-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 8px;
-            margin-bottom: 16px;
-        }
-
-        .nova-mini-box {
-            background: rgba(30, 41, 59, 0.45);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 18px;
-            padding: 12px;
-            backdrop-filter: blur(12px);
-        }
-
-        .nova-mini-box h3 {
-            font-size: 10px;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 4px;
-        }
-
-        .nova-mini-box .val {
-            font-size: 15px;
-            font-weight: 700;
-            color: #38bdf8;
-        }
-
-        .nova-grid {
+        /* App Icon Grid Layout */
+        .app-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px 10px;
-            margin-bottom: auto;
+            gap: 16px 12px;
+            padding: 24px 18px 10px;
+            max-height: 260px;
+            overflow-y: auto;
         }
 
-        .nova-app {
+        /* Hide scrollbar for clean OS look */
+        .app-grid::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        .app-icon-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -177,452 +164,299 @@
             cursor: pointer;
         }
 
-        .nova-icon {
+        .app-icon-wrapper img {
             width: 48px;
             height: 48px;
-            border-radius: 14px;
-            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 11px;
+            object-fit: cover;
+            margin-bottom: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .app-icon-wrapper p {
+            font-size: 10px;
+            color: #ffffff;
+            text-shadow: 0px 1px 2px rgba(0,0,0,0.8);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        /* Spotlight Search Bar */
+        .search-pill {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: fit-content;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin: 20px auto 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .search-pill a {
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Bottom Persistent Dock */
+        .dock {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 26px;
+            padding: 12px 16px;
+            margin: 10px 16px;
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+        }
+
+        .dock img {
+            width: 48px;
+            height: 48px;
+            border-radius: 11px;
+        }
+
+        /* Lock Screen Styling */
+        .lock-date {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .lock-time {
+            text-align: center;
+            font-size: 54px;
+            font-weight: 700;
+            margin-top: -5px;
+            line-height: 1.1;
+        }
+
+        .lock-status {
+            text-align: center;
+            margin: 4px 0 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Notification Center Stack Window */
+        .notification-center {
+            padding: 0 16px;
+            max-height: 295px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .notification-center::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        .notification {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .notification-header i.fa-bell { color: #ff9500; }
+        .notification-header i.fa-whatsapp { color: #25D366; font-size: 14px; }
+        .notification-header i.fa-snapchat { color: #fffc00; font-size: 14px; }
+        .notification-header i.fa-instagram { color: #e1306c; font-size: 14px; }
+        .notification-header i.fa-calendar-days { color: #ff3b30; }
+        .notification-header i.fa-envelope { color: #007aff; }
+
+        .time-sensitivity {
+            color: #ff9500;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .app-name {
+            font-weight: 600;
+        }
+
+        .timestamp {
+            margin-left: auto;
+            opacity: 0.6;
+            font-size: 11px;
+        }
+
+        .notification-body p {
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0.95;
+            line-height: 1.3;
+        }
+
+        /* Lock Screen Quick Action Utilities */
+        .lock-actions {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 32px;
+            align-items: center;
+            z-index: 40;
+        }
+
+        .action-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            color: #38bdf8;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-        }
-
-        .nova-app:hover .nova-icon {
-            transform: scale(1.05);
-            border-color: #38bdf8;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
-        }
-
-        .nova-label {
-            font-size: 10px;
-            color: #94a3b8;
-            margin-top: 5px;
-            font-weight: 500;
-        }
-
-        .nova-dock {
-            background: rgba(15, 23, 42, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 10px;
-            border-radius: 24px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            backdrop-filter: blur(20px);
-        }
-
-        /* --- SCREEN B: ZEN LAUNCHER (MINIMAL DIGITAL DETOX HOME) --- */
-        .launcher-zen {
-            height: 100%;
-            background: linear-gradient(180deg, rgba(243, 237, 226, 0.8) 0%, rgba(227, 218, 201, 0.9) 100%),
-                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&width=400&auto=format&fit=crop') center/cover;
-            display: flex;
-            flex-direction: column;
-            padding: 0 18px 18px 18px;
-            color: #2e333d;
-        }
-
-        .zen-time-widget {
-            text-align: center;
-            margin-top: 24px;
-            margin-bottom: 20px;
-        }
-
-        .zen-time-widget h2 {
-            font-size: 32px;
-            font-weight: 300;
-            letter-spacing: -0.03em;
-            color: #1e2229;
-            line-height: 1;
-        }
-
-        .zen-time-widget p {
-            font-size: 11px;
-            color: #787f8c;
-            margin-top: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-
-        /* Zen Macro Weather/Focus Card */
-        .zen-focus-card {
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 12px 16px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 6px 20px rgba(165, 153, 133, 0.08);
-        }
-
-        .zen-focus-card i {
-            color: #656d7a;
-            font-size: 18px;
-        }
-
-        .zen-focus-card .txt {
-            font-size: 11px;
-            color: #4a515e;
-            font-weight: 500;
-            text-align: right;
-        }
-
-        .zen-list-title {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #787f8c;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .zen-app-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: auto;
-        }
-
-        .zen-row-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 14px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            color: #ffffff;
+            font-size: 16px;
+            transition: background 0.2s;
         }
 
-        .zen-row-item:hover {
-            background: rgba(255, 255, 255, 0.85);
-            transform: translateX(2px);
+        .action-circle:hover {
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
-        .zen-left-meta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .zen-icon-wrapper {
-            color: #5e6675;
-            font-size: 14px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .zen-app-name {
-            font-size: 12px;
-            font-weight: 600;
-            color: #1e2229;
-        }
-
-        .zen-badge {
-            font-size: 10px;
-            color: #787f8c;
-            font-weight: 500;
-        }
-
-        /* --- HOME INDICATORS --- */
-        .zen-home-indicator {
-            width: 100px;
+        /* UI Native Bottom Home Bar Indicator */
+        .home-indicator {
+            width: 110px;
             height: 4px;
-            background-color: rgba(0, 0, 0, 0.15);
-            border-radius: 10px;
-            margin: 10px auto 0 auto;
+            background-color: #ffffff;
+            border-radius: 2px;
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
         }
-
-        .nova-home-indicator {
-            width: 100px;
-            height: 4px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            margin: 10px auto 0 auto;
-        }
-
-        @media screen and (max-width: 900px) {
-            body {
-                padding: 18px 12px;
-                overflow-x: hidden;
-            }
-
-            .workspace {
-                gap: 18px;
-                padding: 0;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .iphone-frame {
-                width: min(90vw, 310px);
-                max-width: 310px;
-            }
-
-            .launcher-nova,
-            .launcher-zen {
-                padding: 0 14px 14px;
-            }
-
-            .nova-grid {
-                gap: 10px 8px;
-            }
-
-            .nova-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 16px;
-            }
-
-            .nova-label {
-                font-size: 9px;
-            }
-
-            .zen-time-widget h2 {
-                font-size: 28px;
-            }
-
-            .zen-focus-card {
-                padding: 10px 14px;
-            }
-
-            .zen-row-item {
-                padding: 10px 12px;
-            }
-
-            .zen-home-indicator,
-            .nova-home-indicator {
-                width: 80px;
-            }
-        }
-
-        @media screen and (max-width: 520px) {
-            body {
-                padding: 14px 10px;
-            }
-
-            .header-title {
-                padding: 0 6px;
-            }
-
-            .header-title h1 {
-                font-size: 22px;
-            }
-
-            .header-title p {
-                font-size: 12px;
-            }
-
-            .workspace {
-                gap: 12px;
-                padding: 0;
-            }
-
-            .iphone-frame {
-                width: min(96vw, 310px);
-            }
-
-            .nova-icon {
-                width: 38px;
-                height: 38px;
-                font-size: 15px;
-            }
-
-            .nova-label {
-                font-size: 8px;
-            }
-
-            .zen-list-title {
-                font-size: 9px;
-            }
-
-            .zen-time-widget h2 {
-                font-size: 25px;
-            }
-
-            .launcher-nova,
-            .launcher-zen {
-                padding: 0 10px 12px;
-            }
-
-            .zen-focus-card {
-                padding: 10px 12px;
-            }
-
-            .zen-row-item {
-                padding: 10px 10px;
-            }
-        }
-    </style>
+    </style> 
 </head>
 <body>
 
-    <div class="header-title">
-        <h1>iPhone Launcher Home Screens</h1>
-        <p>Scaled Screen Layouts featuring Integrated Font Awesome Frameworks</p>
-    </div>
+<div class="wrapper">
+    <nav>
+        <ul>
+            <li><a href="index.html">Project 1</a></li>
+            <li><a href="Project 2.html">Project 2</a></li>
+            <li><a href="Project 3.html">Project 3</a></li>
+            <li><a href="Project 4.html">Project 4</a></li>
+            <li><a href="bank.html">Project 5</a></li>
+            <li><a href="iphone.html">iPhone</a></li>
+        </ul> 
+    </nav>
 
-    <div class="workspace">
+    <div class="mobile-container-flex">
+        
+        <div class="phone-frame screen-home">
+            <div class="phone-header">
+                <div class="status-time">10:54</div>
+                <div class="camera-notch"><span class="lens"></span></div>
+                <div class="status-icons">
+                    <i class="fa-solid fa-signal"></i>
+                    <i class="fa-solid fa-wifi"></i>
+                    <i class="fa-solid fa-battery-full"></i>
+                </div>
+            </div>
 
-        <!-- CONCEPT A: RE-ENGINEERED NOVAOS LAUNCHER -->
-        <div class="iphone-frame">
-            <div class="dynamic-island"><div class="camera-lens"></div></div>
+            <div class="app-grid">
+                <div class="app-icon-wrapper"><img src="5.png" alt=""><p>Reminders</p></div>
+                <div class="app-icon-wrapper"><img src="6.png" alt=""><p>Gallery</p></div>
+                <div class="app-icon-wrapper"><img src="13.png" alt=""><p>Clock</p></div>
+                <div class="app-icon-wrapper"><img src="15.png" alt=""><p>Books</p></div>
+            </div>
+
+            <div class="search-pill">
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i><span>search</span></a>
+            </div>
+
+            <div class="dock">
+                <img src="7.png" alt="Dock 1">
+                <img src="9.png" alt="Dock 2">
+                <img src="3.png" alt="Dock 3">
+                <img src="4.png" alt="Dock 4">
+            </div>
             
-            <div class="launcher-nova">
-                <div class="ios-top-bar" style="color: #94a3b8;">
-                    <div>9:41</div>
-                    <div class="ios-icons">
-                        <i class="fa-solid fa-signal"></i>
-                        <i class="fa-solid fa-wifi"></i>
-                        <i class="fa-solid fa-battery-three-quarters"></i>
-                    </div>
-                </div>
-
-                <!-- Dual System Telemetry Widgets -->
-                <div class="nova-widget-row">
-                    <div class="nova-mini-box">
-                        <h3><i class="fa-solid fa-microchip"></i> Framework</h3>
-                        <div class="val">v4.0.2</div>
-                    </div>
-                    <div class="nova-mini-box">
-                        <h3><i class="fa-solid fa-server"></i> System RAM</h3>
-                        <div class="val">42%</div>
-                    </div>
-                </div>
-
-                <!-- Applications Operational Grid -->
-                <div class="nova-grid">
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-regular fa-comment-dots"></i></div>
-                        <div class="nova-label">Comms</div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-solid fa-globe"></i></div>
-                        <div class="nova-label">Matrix</div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                        <div class="nova-label">DevTools</div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-solid fa-terminal"></i></div>
-                        <div class="nova-label">Terminal</div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-solid fa-sliders"></i></div>
-                        <div class="nova-label">Audio</div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-solid fa-eye"></i></div>
-                        <div class="nova-label">Optics</div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-solid fa-vault"></i></div>
-                        <div class="nova-label">Vault</div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-solid fa-gears"></i></div>
-                        <div class="nova-label">Config</div>
-                    </div>
-                </div>
-
-                <!-- Neomorphic Action Control Dock -->
-                <div class="nova-dock">
-                    <div class="nova-app">
-                        <div class="nova-icon" style="background: #0284c7; color: #fff;"><i class="fa-solid fa-phone"></i></div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-regular fa-envelope"></i></div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon"><i class="fa-regular fa-compass"></i></div>
-                    </div>
-                    <div class="nova-app">
-                        <div class="nova-icon" style="color: #e11d48; border-color: rgba(225,29,72,0.3);"><i class="fa-solid fa-bolt"></i></div>
-                    </div>
-                </div>
-
-                <div class="nova-home-indicator"></div>
-            </div>
+            <div class="home-indicator"></div>
         </div>
 
-        <!-- CONCEPT B: RE-ENGINEERED ZEN LAUNCHER -->
-        <div class="iphone-frame">
-            <div class="dynamic-island"><div class="camera-lens"></div></div>
-
-            <div class="launcher-zen">
-                <div class="ios-top-bar" style="color: #5e6675;">
-                    <div>09:41</div>
-                    <div class="ios-icons">
-                        <i class="fa-solid fa-feather"></i>
-                        <i class="fa-solid fa-battery-full"></i>
-                    </div>
+        <div class="phone-frame screen-lock">
+            <div class="phone-header">
+                <div class="status-time">10:54</div>
+                <div class="camera-notch"><span class="lens"></span></div>
+                <div class="status-icons">
+                    <i class="fa-solid fa-signal"></i>
+                    <i class="fa-solid fa-wifi"></i>
+                    <i class="fa-solid fa-battery-full"></i>
                 </div>
-
-                <!-- Typographic Time Display -->
-                <div class="zen-time-widget">
-                    <h2>Wednesday</h2>
-                    <p>May 27 • Breathe Deeply</p>
-                </div>
-
-                <!-- Macro Environmental Macro Widget -->
-                <div class="zen-focus-card">
-                    <i class="fa-solid fa-cloud-sun"></i>
-                    <div class="txt">
-                        <div style="font-weight: 700; color: #2e333d;">72° & Clear</div>
-                        <div style="font-size: 9px; opacity: 0.8;">Perfect for a walk</div>
-                    </div>
-                </div>
-
-                <!-- Minimalist Navigation Deck Stack -->
-                <div class="zen-list-title">Essential Routines</div>
-
-                <div class="zen-app-list">
-                    <div class="zen-row-item">
-                        <div class="zen-left-meta">
-                            <div class="zen-icon-wrapper"><i class="fa-regular fa-newspaper"></i></div>
-                            <span class="zen-app-name">Journal Reflections</span>
-                        </div>
-                        <span class="zen-badge">Morning</span>
-                    </div>
-                    <div class="zen-row-item">
-                        <div class="zen-left-meta">
-                            <div class="zen-icon-wrapper"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                            <span class="zen-app-name">Voice Connections</span>
-                        </div>
-                        <span class="zen-badge">Direct</span>
-                    </div>
-                    <div class="zen-row-item">
-                        <div class="zen-left-meta">
-                            <div class="zen-icon-wrapper"><i class="fa-solid fa-heart-pulse"></i></div>
-                            <span class="zen-app-name">Meditation Engine</span>
-                        </div>
-                        <span class="zen-badge">10 min</span>
-                    </div>
-                    <div class="zen-row-item">
-                        <div class="zen-left-meta">
-                            <div class="zen-icon-wrapper"><i class="fa-regular fa-envelope-open"></i></div>
-                            <span class="zen-app-name">Digital Letters</span>
-                        </div>
-                        <span class="zen-badge">Clean</span>
-                    </div>
-                </div>
-
-                <div class="zen-home-indicator"></div>
             </div>
-        </div>
 
-    </div>
+            <div class="lock-date">Tuesday, 1 April</div>
+            <div class="lock-time">10:54</div>
+            <div class="lock-status"><i class="fa-solid fa-lock-open"></i></div>
 
-</body>
-</html>
+            <div class="notification-center">
+                <div class="notification">
+                    <div class="notification-header">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="time-sensitivity">TIME-SENSITIVE</span>
+                        <span style="opacity: 0.7; margin-left: 4px;">Screen Time</span>
+                        <span class="timestamp">now</span>
+                    </div>
+                    <div class="notification-body">
+                        <p>Weekly Report Available</p>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <div class="notification-header">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span class="app-name">WhatsApp</span>
+                        <span class="timestamp">5m ago</span>
+                    </div>
+                    <div class="notification-body">
+                        <p>Kofi: Are you coming down to Accra today?</p>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <div class="notification-header">
+                        <i class="fa-brands fa-snapchat"></i>
+                        <span class="app-name">Snapchat</span>
+                        <span class="timestamp">12m ago</span>
+                    </div>
+                    <div class="notification-body">
+                        <p>New Snap from Ama</p>
+                    </div>
+                </div>

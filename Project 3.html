@@ -7,336 +7,510 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 
     <style>
-       *{padding: 0%;
-  margin: 0%;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-    .main
-         {display: flex;
-         flex-wrap: wrap;
-         justify-content: center;
-         background-color: beige;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        
-  .mobile
-        {width: 310px;
-        height: 620px;
-        border: none;
-        margin: 15px;
-        background-color: white;
-        border-radius: 30px;
-    }
-
-.mobile-main
-         {display: flex;
-         flex-wrap: wrap;
-         justify-content: center;
-         margin: 
+        html, body {
+            min-height: 100%;
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0f172a;
+            color: #111827;
         }
- .mobile-main1 img
-         {width: 60px;
-         height: 50px;
-         
-        } 
- .shoe-main
-        {justify-content: center;
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: 4px;
-        margin: 5px;
-        
+
+        body {
+            padding: 24px 12px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .main {
+            width: 100%;
+            max-width: 1024px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: center;
+        }
+
+        nav {
+            width: 100%;
+            background: #1e293b;
+            border-radius: 999px;
+            padding: 10px 10px;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 8px;
+            list-style: none;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 14px;
+            color: #ffffff;
+            font-size: 0.88rem;
+            text-decoration: none;
+            white-space: nowrap;
+            border-radius: 999px;
+            transition: background 0.2s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile {
+            width: 100%;
+            max-width: 360px;
+            aspect-ratio: 9 / 16;
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+            overflow: hidden;
+        }
+
+        .mobile-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 18px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .top1 p {
+            font-size: 0.84rem;
+            color: #111827;
+        }
+
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #111827;
+            font-size: 0.84rem;
+        }
+
+        .status-bar i {
+            font-size: 0.95rem;
+        }
+
+        .mobile-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .mobile-main1 {
+            flex: 1;
+        }
+
+        .mobile-main1 b {
+            display: block;
+            line-height: 1.2;
+        }
+
+        .mobile-main1 b:first-child {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .mobile-main1 b:last-child {
+            font-size: 0.98rem;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .mobile-main1 img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .object-main {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .object1 {
+            flex: 1;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 16px;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
+            font-size: 0.95rem;
+        }
+
+        .object2 {
+            width: 52px;
+            min-width: 52px;
+            height: 52px;
+            background: #111827;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .object2 a {
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .gallery-main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .gallery1 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 58px;
+            padding: 8px 12px;
+            border-radius: 14px;
+            border: 1px solid #d1d5db;
+            background: #f8fafc;
+            color: #111827;
+            font-size: 0.88rem;
+        }
+
+        .gallery1.active {
+            background: #111827;
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        .shoe-main {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .shoe {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #f8fafc;
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        .shoe img {
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            object-fit: cover;
+        }
+
+        .shoe p,
+        .shoe b {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .shoe b {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .space {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            padding: 14px 16px 18px;
+            background: #f8fafc;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .space1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: #111827;
+        }
+
+        .space1 a {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: #ffffff;
+            color: #111827;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+        }
+
+        .space1.active a {
+            background: #111827;
+            color: #ffffff;
+        }
+
+        .first-main {
+            width: 100%;
+            min-height: 240px;
+            border-radius: 28px;
+            background-image: url('Screenshot_20251020_110142_Gallery.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .first-main::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(15, 23, 42, 0.55) 100%);
+        }
+
+        .first {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .first1 {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .product-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .product-head h3 {
+            font-size: 1.05rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+
+        .product-head .price {
+            color: #f97316;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #f97316;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .details p {
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        .color-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .color-swatch {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+        }
+
+        .color-swatch.active {
+            border-color: #111827;
+        }
+
+        .size-select {
+            width: 100%;
+            max-width: 240px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid #d1d5db;
+            background: #fff;
+            font-size: 0.95rem;
+            color: #111827;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 16px;
+            background: #f97316;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            opacity: 0.95;
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .main {
+                max-width: 100%;
+                gap: 14px;
+            }
+
+            nav ul {
+                gap: 5px;
+            }
+
+            .mobile-inner {
+                padding: 16px;
+            }
+
+            .mobile-main {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .object-main {
+                flex-direction: column;
+            }
+
+            .object2 {
+                width: 100%;
+                min-width: auto;
+                height: 52px;
+            }
+
+            .gallery-main {
+                justify-content: center;
+            }
+
+            .shoe-main {
+                grid-template-columns: 1fr;
+            }
+
+            .space {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .top {
+                gap: 8px;
+            }
+
+            .product-head {
+                gap: 8px;
+            }
+
+            .product-head .price {
+                width: 100%;
+                text-align: right;
+            }
+        }
+
+         .site-nav {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: center;
     }
 
-    .shoe
-        {width: 130px;
-        height: 150px;
-        margin: 6px;
-        
+    .site-nav ul {
+      display: flex;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
- .shoe img
-        {width: 130px;
-        height: 120px;
-    
-    }
-
-.shoe p
-       {font-size: 8px;
-    }
-.shoe b
-      {font-size: 8px;
-    }   
-
-
- #house
-      {color: orangered;
-        width: 80px;
-      }
-      
- #compass
-      {color: gray;
-       width: 80px; 
-      }
-      
-  #shopping
-      {color: gray;
-        width: 80px;
-         }
-      
- #user
-      {color:  gray;
-        width: 80px;
-      
-      }   
-      
-#magnifier
-       {margin: 14px;
-        color: white;
-      }
-
-  #heart
-       {margin-left: 260px;
-        margin-top: 20px;
-        text-decoration: none;
-      }  
-      
- #star
-      {margin-left: 8px;
-      color: orange;
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
       text-decoration: none;
-    }     
-    
-          footer li
-                   {color: white;
-                    margin: 10px;
-                    display: inline-block;
-                    font-size: 30px;
-                    margin-top: 20px;  
-                    
-                  }
-           footer 
-                 {background-color:white;
-                  text-align: left;
-                  width: 100%;
-                  height: 50px;
-                  }       
-         
-           footer a 
-                   {color: white;
-                   text-decoration: none;
-                  }
-.object-main
-         {display: flex;
-         flex-wrap: wrap;
-        justify-content: center;
-        width: 300px;
-        height: 45px;
-      }
-  .object1
-        {margin-left: 10px;
-        }    
-
-.object2
-       {width: 41px;
-       height: 41px;
-      background-color: rgb(12, 12, 12);
-      border-radius: 8px;
-      border: 2px solid black;
-    margin-left: 10px;
-      }
-
-.gallery-main
-         {display: flex;
-         flex-wrap: wrap;
-        justify-content: center;
-        width: 300px;
-        height: 45px;
-      }
-      
- .gallery1
-      {width: 58px;
-       height: 20px;
-      border-radius: 8px;
-      border: 1px solid rgb(31, 30, 30);
-    margin-left: 10px;
-      }
-   .gallery1 p
-       {font-size: 13px;
-        color: rgb(26, 24, 24);
-        margin-left: 4px;
-        margin-top: 2px;
-}
-
-.first-main
-     {background-image: url(Screenshot_20251020_110142_Gallery.jpg);
-     width: 290px;
-    height: 270px;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    border: none;
-    margin-left: 10px;
-    margin-top: 10px;
-    background-size: cover;
-    background-position: center;
+      white-space: nowrap;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
- .first
-       {display: flex;
-       justify-content: center;
-       }   
-   
- .first1
-      {width: 7px;
-      height: 7px;
-      margin: 2px;
-      margin-top: 200px;
-      border-radius: 5px;
-      border: 1px solid black;
-      }    
-      
- .second-main
-     {display: flex;
-     height: 40px;
-     width: 190px;
-     margin-left: 10px;
-     }
-.second
-    {height: 40px;
-    width: 40px;
-    background-color: transparent;
-    margin-left: 10px;
-    border-radius: 3px;
-    border: 1px solid rgb(224, 215, 215);
+    .site-nav a:hover,
+    .site-nav a.active {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
     }
-    
- .second1
-    {height: 25px;
-    width: 25px;
-    background-color: rgb(214, 91, 91);
-    margin: 7px;
-    border-radius: 5px;
-    }   
- .mobile select
-      {padding: 7px;
-      margin-left: 20px;
-    border: 1px solid gray;
-    background: transparent;
-    width: 110px;
-    border-radius: 11px;
-    }  
-    
-.space
-     {display: flex;
-     justify-content: center;
-     width: 310px;
-     height: 45px;
-    margin-left: 28px;
-    }  
- 
-.status-bar
-     {display: flex;
-     gap: 8px;
-     align-items: center;
-     width: fit-content;
-     padding: 5px;
-     background-color: transparent;
-     border-radius: 5px;
-     margin-top: 7px;
-     }
-     
-.status-bar i
-     {font-size: 0.5em;
-     color: black;
-     line-height: 1;
-     } 
-     
-.fa-battery-full
-     {font-size: 0.9em;
-     }   
-     
-.top
-   {display: flex;
-    justify-content: center;
-    margin-top: 5px;
-  }
-  
-.top1
-   {
-  margin-right: 210px;
-  }  
-
- nav li
-              {color:white;
-               font-size: 15px;
-               margin: 26px;
-               display: inline-block;
-               margin-top: px;
-              
-        }         
-  nav a 
-        {color:white;
-        text-decoration: none;
-         }   
-                
- nav 
-       {width: 100%;
-        height: 60px;
-       background-color: darkblue;
-        text-align: center;
-         overflow: auto;
-          }   
-               
- @media screen and (max-width: 768px){
-  body {
-    width: 100vw;
-    overflow-x: hidden;
-  }
-  
-  .main {
-    width: 100vw;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .mobile {
-    width: 95vw !important;
-    max-width: none !important;
-    height: auto !important;
-  }
-  
-  nav li
-              {color:white;
-               font-size: 12px;
-               margin: 12px;
-               display: inline-block;
-               margin-top: px;
-              
-        }         
-  nav a 
-        {color:white;
-        text-decoration: none;
-         }   
-                
- nav 
-       {width: 100%;
-        height: 45px;
-       background-color: darkblue;
-        text-align: center;
-         overflow: auto;
-          } 
- }                               
     </style>
 </head>
 <body>  
    <div class="main">
-   <nav>
+         <nav>
  <ul>
      <li><a href="index.html">Project 1</a></li>
     <li><a href="Project 3.html">Project 2</a></li>
@@ -347,182 +521,139 @@ html, body {
      
  </ul> 
         </nav>
- <div class="mobile">
-<div class="top">
-<div class="top1">    
-  <p style="font-size: 10px;margin-top: 10px;">9:23</p>
-</div>
-<div class="status-bar">
- <i class="fa-solid fa-signal" id=""></i>
- <i class="fa-solid fa-wifi" id=""></i> 
- <i class="fa-solid fa-battery-full" id="fa-battery-full"></i>
-</div>  
-  </div>
 
-  <div class="mobile-main">     
-<div class="mobile-main1">
-<b style="font-size: 12px;margin-right: 180px;">Hi Jacky</b>
-<br>
-<b>Good morning</b>
-</div>
-<div class="mobile-main1">
-<img src="girl.png" alt="">
-</div>
-  </div>
-<br>
-<div class="object-main">
-  <div class="object1"> 
-  <input type="search" placeholder="Search"style=";padding: 14px; 
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;width: 218px;border:none;border-radius: 12px;">
-  </div>
+        <div class="mobile">
+            <div class="mobile-inner">
+                <div class="top">
+                    <div class="top1">
+                        <p>9:23</p>
+                    </div>
+                    <div class="status-bar">
+                        <i class="fa-solid fa-signal"></i>
+                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fa-solid fa-battery-full"></i>
+                    </div>
+                </div>
 
-  <div class="object2">
-<a href=""><i class="fa-solid fa-magnifying-glass" id="magnifier"></i></a>
-  </div>
+                <div class="mobile-main">
+                    <div class="mobile-main1">
+                        <b>Hi Jacky</b>
+                        <b>Good morning</b>
+                    </div>
+                    <div class="mobile-main1">
+                        <img src="girl.png" alt="Profile">
+                    </div>
+                </div>
 
-</div>
-<br>
-<div class="gallery-main">
-<div class="gallery1" style="width: 49px;background-color: black;">
-<p style="color: white;margin-left: 10px;">All</p>
-</div>
+                <div class="object-main">
+                    <div class="object1">
+                        <input type="search" class="search-input" placeholder="Search">
+                    </div>
+                    <div class="object2">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </div>
+                </div>
 
-<div class="gallery1">
-<p style="margin-left: 10px;">Nike</p>
-</div>
+                <div class="gallery-main">
+                    <div class="gallery1 active">All</div>
+                    <div class="gallery1">Nike</div>
+                    <div class="gallery1">Adidas</div>
+                    <div class="gallery1">Converse</div>
+                </div>
 
-<div class="gallery1">
-<p style="margin-left: 3px;">Adidas</p>
-</div>
+                <div class="shoe-main">
+                    <div class="shoe">
+                        <img src="Screenshot_20250811_194705_Gallery.png" alt="Nike Air Force 1">
+                        <p>Nike Air Force 1</p>
+                        <b>GHC 119.99</b>
+                    </div>
+                    <div class="shoe">
+                        <img src="Screenshot_20250811_194702_Gallery.png" alt="NikeCourt Air">
+                        <p>NikeCourt Air</p>
+                        <b>GHC 250.0</b>
+                    </div>
+                    <div class="shoe">
+                        <img src="Screenshot_20250811_194657_Gallery.png" alt="Nike Air Force">
+                        <p>Nike Air Force</p>
+                        <b>GHC 450.99</b>
+                    </div>
+                    <div class="shoe">
+                        <img src="Screenshot_20250811_194654_Gallery.png" alt="Nike Air Force 1 Shadow">
+                        <p>Nike Air Force 1 Shadow</p>
+                        <b>GHC 330.0</b>
+                    </div>
+                </div>
 
-<div class="gallery1">
-<p style="font-size: 13px;color: rgb(26, 24, 24);margin-left: 4px;">Converse</p>
-</div>
-</div>
-<div class="shoe-main">
-<div class="shoe">
-<img src="Screenshot_20250811_194705_Gallery.png" alt="">
-<p>Nike Air Force 1</p>
-<b>GHC 119.99</b>
-</div>
+                <div class="space">
+                    <div class="space1 active">
+                        <a href="#"><i class="fa-solid fa-house-fire"></i></a>
+                        <p>Home</p>
+                    </div>
+                    <div class="space1">
+                        <a href="#"><i class="fa-solid fa-compass"></i></a>
+                        <p>Compass</p>
+                    </div>
+                    <div class="space1">
+                        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <p>Cart</p>
+                    </div>
+                    <div class="space1">
+                        <a href="#"><i class="fa-solid fa-user"></i></a>
+                        <p>Profile</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="shoe">
-<img src="Screenshot_20250811_194702_Gallery.png" alt="">
-<p>NikeCourt Air</p>
-<b>GHC 250.0</b>
-</div>
+        <div class="mobile">
+            <div class="mobile-inner">
+                <div class="first-main">
+                    <a href="#" class="favorite-button"><i class="fa-regular fa-heart"></i></a>
+                    <div class="first">
+                        <div class="first1"></div>
+                        <div class="first1" style="background-color: black;"></div>
+                        <div class="first1"></div>
+                    </div>
+                </div>
 
-<div class="shoe">
-<img src="Screenshot_20250811_194657_Gallery.png" alt="">
-<p>Nike Air Force</p>
-<b>GHC 450.99</b>
-</div>
-<div class="shoe">
-<img src="Screenshot_20250811_194654_Gallery.png" alt="">
-<p>Nike Air Force 1 Shadow</p>
-<b>GHC 330.0</b>
-</div>
-</div>
+                <div class="product-card">
+                    <div class="product-head">
+                        <h3>Nike Air Force</h3>
+                        <span class="price">$50.00</span>
+                    </div>
+                    <a href="#" class="rating"><i class="fa-solid fa-star"></i> 4.5 (15 reviews)</a>
 
-<hr style="border: 1px solid gray;">
-<br>
-<div class="space">
-  <div class="space1">
-  <a href=""><i class="fa-solid fa-house-fire" id="house"></i></a>
-  <p style="font-size: 10px;color: black;margin-left: px;">Home</p>
-  </div>
-  <div class="class">
-    <a href=""><i class="fa-solid fa-compass" id="compass"></i></a>
-  <p style="font-size: 10px;color: black;">compass</p>
-  </div>
-  <div class="space1">
-    <a href=""><i class="fa-solid fa-cart-shopping" id="shopping"></i></a>
-  <p style="font-size: 10px;color: black;margin-left: px;">Cart</p>
-  </div>
-  <div class="space1">
-    <a href=""><i class="fa-solid fa-user" id="user"></i></a>
-  <p style="font-size: 10px;color: black;margin-left: px;">Profile</p>
-</div>
-</div>
+                    <div class="details">
+                        <b>Details</b>
+                        <p>Nike Dri-FIT is a polyester fabric design to help you stay dry while you work harder, longer.</p>
+                    </div>
 
- </div> 
- 
- <div class="mobile">
-<div class="first-main">  
-<a href=""><i class="fa-regular fa-heart" id="heart"></i></a>
-<br>
+                    <div>
+                        <b>Color</b>
+                        <div class="color-row">
+                            <div class="color-swatch active" style="background-color: black;"></div>
+                            <div class="color-swatch" style="background-color: rgb(250, 206, 124);"></div>
+                            <div class="color-swatch" style="background-color: gray;"></div>
+                            <div class="color-swatch" style="background-color: rgb(224, 179, 163);"></div>
+                        </div>
+                    </div>
 
-  <div class="first">
-<div class="first1">
+                    <div>
+                        <b>Size:</b>
+                        <select class="size-select">
+                            <option value="">Choose Size</option>
+                            <option value="40">Size - 40</option>
+                            <option value="41">Size - 41</option>
+                            <option value="42">Size - 42</option>
+                            <option value="43">Size - 43</option>
+                            <option value="44">Size - 44</option>
+                        </select>
+                    </div>
 
-</div>
-
-<div class="first1" style="background-color: black;">
-
-</div>
-
-<div class="first1">
-
-</div>
-  </div>
-
-</div>
-
-<br>
-<h3 style="margin-left: 20px;font-size: 19px;font-weight:bolder;">Nike Air Force <span style="margin-left: 79px;font-size: 18px;color: orange;">$ 50.00</span></h3>
-
-<a href="" id="star"><i class="fa-solid fa-star" id="star"></i><label style="margin-left: 4px;color: orange;">4.5 (15 reviews)</label></a>
-<br>
-
-<b style="margin-left: 20px;font-size: 12px;">Details</b>
-<p style="margin-left: 20px;font-size: 11px;">Nike Dri-FIT is a polister fabric design to help you</p>
-<p style="margin-left: 20px;font-size: 11px;">keep dry so you can  more comfortable work harder,</p>
-<p style="margin-left: 20px;font-size: 11px;">longer</p>
-<br>
-
-<b style="margin-left: 20px;font-size: 12px;">Color</b>
-<br>
-<div class="second-main">
-<div class="second">
-<div class="second1" style="background-color: black;">
-
-</div>
-</div>
-
-<div class="second">
-<div class="second1" style="background-color: rgb(250, 206, 124);">
-
-</div>
-</div>
-
-<div class="second">
-<div class="second1" style="background-color: gray;">
-
-</div>
-</div>
-
-<div class="second">
-<div class="second1" style="background-color: rgb(224, 179, 163);">
-
-</div>
-</div>
-</div>
-<br>
-<b style="margin-left: 20px;font-size: 12px;">Size:</b>
-<br>
-<select>Choose Size
-  <option value="">Choose Size</option>
-  <option value="">Size-40</option>
-  <option value="">Size-41</option>
-  <option value="">Size-42</option>
-  <option value="">Size-43</option>
-  <option value="">Size-44</option>
-</select>
-<br><br>
-<button style="width: 268px; border: 1px solid grey;margin-left: 20px;padding: 13px; border-radius: 14px;border: none;background-color: rgb(228, 84, 32); color: white;">Buy now</button>
-
- </div>
-
-   </div> 
+                    <button class="buy-button">Buy now</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

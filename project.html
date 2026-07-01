@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 2 | Sneaker Vault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --accent: #3b82f6;
+      --accent-dark: #1d4ed8;
+      --text: #111827;
+      --muted: #6b7280;
+      --shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+      --phone-radius: 34px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: #0f172a;
+      color: var(--text);
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    body {
+      padding: 24px 12px;
+    }
+
+    .main {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .site-nav {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: center;
+      background: #1e293b;
+      border-radius: 999px;
+    }
+
+    .site-nav ul {
+      display: flex;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .phone-row {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px 0 40px;
+    }
+
+    .mobile {
+      width: 340px;
+      max-width: 100%;
+      height: 640px; /* Locked height ensures the phone shell acts perfectly like a device viewport */
+      background: var(--card);
+      border-radius: var(--phone-radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.09);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Scrollable frame inner body container */
+    .phone-content {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .phone-content::-webkit-scrollbar {
+      display: none; /* Safari & Chrome */
+    }
+
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 16px 20px;
+      background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+      z-index: 10;
+    }
+
+    .status {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-left: auto;
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    .status-row {
+  display: flex;
+  justify-content: space-between; /* This forces the clock to the left and icons to the right */
+  align-items: center;
+  width: 100%;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.status-right {
+  display: flex;
+  gap: 6px; /* This keeps a nice space between the icons themselves */
+}
+
+    .brand-name {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      width: 100%;
+      text-align: left;
+    }
+
+    .search-panel {
+      padding: 0 18px 16px;
+    }
+
+    .search-panel form {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: #f3f4f6;
+      border-radius: 18px;
+      padding: 10px 14px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .search-panel input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 0 18px 18px;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+      line-height: 1.2;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      padding: 0 18px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    
+    .chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip {
+      padding: 8px 16px;
+      border-radius: var(--phone-radius);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.88rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .chip.active {
+      background: var(--accent);
+      color: white;
+      border-color: transparent;
+    }
+
+    .product-grid {
+      display: grid;
+      gap: 16px;
+      padding: 0 18px 24px;
+    }
+
+    .product-card {
+      border-radius: 24px;
+      overflow: hidden;
+      background: #f8fafc;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .product-image {
+      position: relative;
+      min-height: 180px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .product-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(15, 23, 42, 0.75) 100%);
+    }
+
+    .product-image .label {
+      position: relative;
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .product-info {
+      padding: 14px 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: white;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-secondary,
+    .btn-primary {
+      border: none;
+      border-radius: var(--phone-radius);
+      cursor: pointer;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .details-card {
+      padding: 0 18px 24px;
+    }
+
+    .details-card h2 {
+      font-size: 1.3rem;
+      color: var(--text);
+    }
+
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      color: #f59e0b;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .description {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      color: var(--text);
+      font-size: 0.88rem;
+    }
+
+    .feature i {
+      color: var(--accent);
+    }
+
+    .order-bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .icon-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: white;
+      color: var(--text);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .order-btn {
+      flex: 1;
+      background: var(--accent-dark);
+      color: white;
+      border: none;
+      height: 50px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .phone-row {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main">
+    <nav class="site-nav">
+      <ul>
+        <li><a class="active" href="index.html">Project 1</a></li>
+        <li><a class="active" href="Project 2.html">Project 2</a></li>
+        <li><a class="active" href="Project 3.html">Project 3</a></li>
+        <li><a class="active" href="Project 4.html">Project 4</a></li>
+        <li><a class="active" href="project 5.html">Project 5</a></li>
+        <li><a class="active" href="bank.html">Project 6</a></li>
+        <li><a class="active" href="iphone.html">iPhone</a></li>
+      </ul>
+    </nav>
+
+    <div class="phone-row">
+      <section class="mobile">
+
+       <div class="card-top">
+  <div class="status-row">
+    <span>9:23</span>
+    
+    <div class="status-right">
+      <i class="fa-solid fa-signal" aria-hidden="true"></i>
+      <i class="fa-solid fa-wifi" aria-hidden="true"></i>
+      <i class="fa-solid fa-battery-full"></i>
+    </div>
+  </div>
+  <div class="brand-name">KicksVault</div>
+</div>
+
+
+        <div class="phone-content">
+          <div class="search-panel">
+            <form action="#" method="get">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" name="q" placeholder="Search sneakers..." aria-label="Search products">
+            </form>
+          </div>
+
+          <div class="hero">
+            <h1>Explore the premium collection</h1>
+            <p>Discover trending drops with authentic quality, performance designs, and lightning-fast worldwide delivery.</p>
+          </div>
+
+          <div class="chips">
+            <button class="chip active" type="button">Popular</button>
+            <button class="chip" type="button">New Releases</button>
+            <button class="chip" type="button">Top Sellers</button>
+            <button class="chip" type="button">Limited</button>
+          </div>
+
+          <div class="product-grid">
+            <article class="product-card">
+              <div class="product-image" style="background-image: url('shoe1.png');">
+                <div class="label">Nike Air Max 270</div>
+              </div>
+              <div class="product-info">
+                <div class="badges">
+                  <span class="badge">GHC 95.00</span>
+                  <span class="badge"><i class="fa-solid fa-fire" style="color: #f97316;"></i> Popular</span>
+                </div>
+                <div class="product-actions">
+                  <button class="btn-secondary" type="button"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+                  <button class="btn-primary" type="button">Buy</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-image" style="background-image: url('shoe2.png');">
+                <div class="label">Adidas 4DFWD 2</div>
+              </div>
+              <div class="product-info">
+                <div class="badges">
+                  <span class="badge">GHC 95.00</span>
+                  <span class="badge">Top Seller</span>
+                </div>
+                <div class="product-actions">
+                  <button class="btn-secondary" type="button"><i class="fa-solid fa-heart"></i> Wish</button>
+                  <button class="btn-primary" type="button">Cart</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile">
+        <!-- <div class="card-top">
+          <div class="status">
+            <i class="fa-solid fa-arrow-left" aria-label="Go back" style="cursor: pointer;"></i>
+            <span style="margin-left: 258px;">9:25</span>
+          </div>
+          <div class="brand-name">Details</div>
+        </div> -->
+<div class="card-top">
+  <div class="status-row">
+    <span>9:25</span> <div class="status-right"> <i class="fa-solid fa-signal"></i>
+      <i class="fa-solid fa-wifi"></i>
+      <i class="fa-solid fa-battery-full"></i>
+    </div>
+  </div>
+  
+  <div class="brand-row" style="margin-top: 8px;">
+    <div class="back-action-row" style="display: flex; align-items: center; gap: 10px;">
+      <i class="fa-solid fa-arrow-left"></i>
+      <div class="brand-name">Details</div>
+    </div>
+  </div>
+</div>
+
+        <div class="phone-content">
+          <div class="product-image" style="height: 220px; background-image: url('shoe1.png'); margin: 0 18px 18px; border-radius: 20px;"></div>
+
+          <div class="details-card">
+            <h2>Nike Air Max 270</h2>
+            <div class="rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7 · 140 reviews</div>
+            <p class="description">A performance-inspired design featuring dual-density foam responsive cushioning, breathable engineered mesh, and structured support.</p>
+
+            <div class="feature-list">
+              <div class="feature"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>Free shipping & instant tracking</span></div>
+              <div class="feature"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span>30-day authentic return guarantee</span></div>
+            </div>
+
+            <div class="order-bar">
+              <button class="icon-btn" type="button" aria-label="View shopping cart"><i class="fa-solid fa-cart-shopping"></i></button>
+              <button class="order-btn" type="button">Order Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
