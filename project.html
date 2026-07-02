@@ -404,23 +404,72 @@
         align-items: center;
       }
     }
+
+    /* Top Navigation Bar */
+nav {
+    width: 100%;
+    background-color: #1e293b;
+    padding: 10px 12px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center; /* Centered by default on laptops/desktops */
+    gap: 12px;
+    list-style: none;
+    flex-wrap: nowrap;
+    padding-inline: 6px;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* hide scrollbar */
+nav ul::-webkit-scrollbar { 
+    display: none; 
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Mobile responsive alignment to enable smooth scrolling */
+@media (max-width: 768px) {
+    nav ul {
+        justify-content: flex-start; /* Aligns to the left so scrolling works correctly */
+        min-width: max-content; /* Prevents text from wrapping or shrinking on tiny screens */
+    }
+}
   </style>
 </head>
 <body>
 
   <div class="main">
-    <nav class="site-nav">
-      <ul>
-        <li><a class="active" href="index.html">Project 1</a></li>
-        <li><a class="active" href="Project 2.html">Project 2</a></li>
-        <li><a class="active" href="Project 3.html">Project 3</a></li>
-        <li><a class="active" href="Project 4.html">Project 4</a></li>
-        <li><a class="active" href="project 5.html">Project 5</a></li>
-        <li><a class="active" href="bank.html">Project 6</a></li>
-        <li><a class="active" href="iphone.html">iPhone</a></li>
-      </ul>
-    </nav>
-
+     <nav>
+ <ul>
+     <li><a href="index.html">Project 1</a></li>
+    <li><a href="Project 3.html">Project 2</a></li>
+    <li><a href="Project 4.html">Project 3</a></li>
+     <li><a href="bank.html">Project 4</a></li>
+     <li><a href="iphone.html">Project 5</a></li>
+    
+     
+ </ul> 
+        </nav>
     <div class="phone-row">
       <section class="mobile">
 
