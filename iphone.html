@@ -355,18 +355,19 @@ nav a:hover {
             left: 0;
             right: 0;
             display: flex;
-            justify-content: center;
-            gap: 88px;
-            padding: 0;
+            justify-content: space-between; /* Spreads flashlight and camera to outer sides */
+            padding: 0 24px; /* Adds comfortable edge padding inside phone frame */
             align-items: center;
             z-index: 60;
         }
+        
         .action-circle {
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: rgba(0, 0, 0, 0.45);
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -374,14 +375,12 @@ nav a:hover {
             box-shadow: 0 6px 18px rgba(0,0,0,0.35);
         }
 
-        .action-circle i,
-        .action-circle img {
+        .action-circle i {
             color: #ffffff;
             font-size: 20px;
-            width: 24px;
-            height: 24px;
-            display: inline-block;
-            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* UI Native Bottom Home Bar Indicator */
@@ -453,10 +452,6 @@ nav a:hover {
                 <div class="app-icon-wrapper"><img src="10.png" alt=""><p>Mail</p></div>
             </div>
 
-            <!-- <div class="search-pill">
-                <a href="#"><i class="fa-solid fa-magnifying-glass"></i><span>search</span></a>
-            </div> -->
-
             <div class="dock">
                 <img src="7.png" alt="Dock 1">
                 <img src="9.png" alt="Dock 2">
@@ -502,7 +497,7 @@ nav a:hover {
                             <span class="timestamp">5m ago</span>
                         </div>
                         <div class="notification-body">
-                            <p>Kofi: Are you coming down to Accra today?</p>
+                            <p>Hayford: Are you coming down to Accra today?</p>
                         </div>
                     </div>
 

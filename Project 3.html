@@ -53,93 +53,52 @@
         }
 
         /* Top Navigation Bar */
-     nav {
-    width: 100%;
-    background-color: #1e293b;
-    padding: 10px 12px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
+        nav {
+            width: 100%;
+            background-color: #1e293b;
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
 
-nav ul {
-    display: flex;
-    justify-content: center; /* Centered by default on laptops/desktops */
-    gap: 12px;
-    list-style: none;
-    flex-wrap: nowrap;
-    padding-inline: 6px;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            list-style: none;
+            flex-wrap: nowrap;
+            padding-inline: 6px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
-/* hide scrollbar */
-nav ul::-webkit-scrollbar { 
-    display: none; 
-}
+        nav ul::-webkit-scrollbar { 
+            display: none; 
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    white-space: nowrap;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background-color: rgba(255, 255, 255, 0.08);
-    font-size: 14px;
-    transition: background 0.3s;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background-color: rgba(255, 255, 255, 0.08);
+            font-size: 14px;
+            transition: background 0.3s;
+        }
 
-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-}
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
 
-/* Mobile responsive alignment to enable smooth scrolling */
-@media (max-width: 768px) {
-    nav ul {
-        justify-content: flex-start; /* Aligns to the left so scrolling works correctly */
-        min-width: max-content; /* Prevents text from wrapping or shrinking on tiny screens */
-    }
-
-}
-
- .site-nav {
-      width: 100%;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .site-nav ul {
-      display: flex;
-      gap: 10px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .site-nav a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #f8fafc;
-      text-decoration: none;
-      white-space: nowrap;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .site-nav a:hover,
-    .site-nav a.active {
-      background: rgba(255, 255, 255, 0.18);
-      transform: translateY(-1px);
-    }
+        @media (max-width: 768px) {
+            nav ul {
+                justify-content: flex-start;
+                min-width: max-content;
+            }
+        }
 
         /* Mockup Grid Setup - Container for Side by Side Apps */
         .app-container {
@@ -155,6 +114,7 @@ nav a:hover {
         .mobile {
             width: 100%;
             max-width: 375px;
+            height: 750px;
             background: #ffffff;
             border-radius: 40px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -196,10 +156,14 @@ nav a:hover {
             flex-direction: column;
             gap: 20px;
             overflow-y: auto;
-            max-height: 640px;
+            flex: 1;
         }
 
-        /* Custom Scrollbar for inner content if needed */
+        /* Fixed outer wrapper for screens where only the inner grid scrolls */
+        .screen-content.fixed-layout {
+            overflow-y: hidden;
+        }
+
         .screen-content::-webkit-scrollbar {
             width: 4px;
         }
@@ -301,6 +265,7 @@ nav a:hover {
             overflow-x: auto;
             padding-bottom: 4px;
             scrollbar-width: none;
+            flex-shrink: 0;
         }
         .brand-tabs::-webkit-scrollbar {
             display: none;
@@ -325,11 +290,23 @@ nav a:hover {
             border-color: transparent;
         }
 
-        /* Product Grid view */
+        /* Product Grid view - Dedicated Scroll Container */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 0; /* Crucial for internal flex child scrolling */
+            padding-right: 4px;
+        }
+
+        .products-grid::-webkit-scrollbar {
+            width: 4px;
+        }
+        .products-grid::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 10px;
         }
 
         .product-item {
@@ -381,6 +358,7 @@ nav a:hover {
             padding: 12px 10px 24px;
             background: #ffffff;
             border-top: 1px solid var(--border-light);
+            flex-shrink: 0;
         }
 
         .nav-item {
@@ -414,6 +392,7 @@ nav a:hover {
             background-position: center;
             position: relative;
             overflow: hidden;
+            flex-shrink: 0; 
         }
 
         .favorite-btn {
@@ -568,6 +547,8 @@ nav a:hover {
 
         .action-button-row {
             padding-top: 10px;
+            margin-top: auto; 
+            padding-bottom: 10px;
         }
 
         .btn-primary {
@@ -593,7 +574,6 @@ nav a:hover {
             transform: scale(0.98);
         }
 
-        /* Desktop side by side, responsive breaks down cleanly */
         @media (max-width: 820px) {
             body {
                 padding: 20px 10px;
@@ -607,19 +587,17 @@ nav a:hover {
 <body>  
     <div class="main">
         <!-- Navigation Header Component -->
-      <nav>
- <ul>
-     <li><a href="index.html">Project 1</a></li>
-    <li><a href="Project 3.html">Project 2</a></li>
-    <li><a href="Project 4.html">Project 3</a></li>
-     <li><a href="bank.html">Project 4</a></li>
-     <li><a href="iphone.html">Project 5</a></li>
-    
-     
- </ul> 
+        <nav>
+            <ul>
+                <li><a href="index.html">Project 1</a></li>
+                <li><a href="Project 3.html">Project 2</a></li>
+                <li><a href="Project 4.html">Project 3</a></li>
+                <li><a href="bank.html">Project 4</a></li>
+                <li><a href="iphone.html">Project 5</a></li>
+            </ul> 
         </nav>
 
-        <!-- Container holds screens left-to-right (Side-By-Side) -->
+        <!-- Container holds screens side-by-side -->
         <div class="app-container">
             
             <!-- APPLICATION SCREEN 1: PRODUCT BROWSER -->
@@ -635,12 +613,12 @@ nav a:hover {
                         </div>
                     </div>
 
-                    <!-- Scrollable View Screen -->
-                    <div class="screen-content">
+                    <!-- Screen Content Wrapper (Fixed Layout - Non-scrolling Outer View) -->
+                    <div class="screen-content fixed-layout">
                         <!-- Profile/Greeting Unit -->
                         <div class="header-profile">
                             <div class="welcome-text">
-                                b>Hi Jacky</b>
+                                <b>Hi Jacky</b>
                                 <b>Good morning</b>
                             </div>
                             <div class="avatar-wrap">
@@ -663,10 +641,10 @@ nav a:hover {
                             <div class="brand-badge">Nike</div>
                             <div class="brand-badge">Adidas</div>
                             <div class="brand-badge">Puma</div>
-                            <div class="brand-badge">Asics</div>
+                            <div class="brand-badge">Air Jordan</div>
                         </div>
 
-                        <!-- Product Grid Container -->
+                        <!-- Product Grid Container (Dedicated Vertical Scroll) -->
                         <div class="products-grid">
                             <div class="product-item">
                                 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=300&auto=format&fit=crop" alt="Nike Air Force 1">
@@ -694,6 +672,20 @@ nav a:hover {
                                 <div class="product-info">
                                     <p>Air Force 1 Shadow</p>
                                     <b>GHC 330.00</b>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=300&auto=format&fit=crop" alt="Nike Air Max 270">
+                                <div class="product-info">
+                                    <p>Nike Air Max 270</p>
+                                    <b>GHC 280.00</b>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=300&auto=format&fit=crop" alt="Nike Zoom Running">
+                                <div class="product-info">
+                                    <p>Nike Zoom Running</p>
+                                    <b>GHC 210.00</b>
                                 </div>
                             </div>
                         </div>
